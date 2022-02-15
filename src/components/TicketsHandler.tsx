@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+import BuyForm from './BuyForm'
 
 interface Tickets {
     tickets: any[]
+    rate: number
+    rateName: string
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function TicketsHandler({ tickets }: Tickets) {
+function TicketsHandler({ tickets, rate, rateName }: Tickets) {
+    const [modalActive, setModalActive] = useState(false)
     return (
         <>
             {tickets.map((ticket) => (
@@ -65,14 +69,16 @@ function TicketsHandler({ tickets }: Tickets) {
                                 <button
                                     type="submit"
                                     className="btn btn-warning"
+                                    onClick={() => setModalActive(true)}
                                 >
-                                    {ticket.price}грн.
+                                    {ticket.price * rate + rateName}
                                 </button>
                             </p>
                         </div>
                     </div>
                 </div>
             ))}
+            <BuyForm active={modalActive} setActive={setModalActive} />
         </>
     )
 }

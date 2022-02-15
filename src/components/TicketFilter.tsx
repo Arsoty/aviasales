@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import TicketList from './TicketList'
 
+interface IRate {
+    rate: string
+}
+
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function TicketFilter() {
+export function TicketFilter({ rate }: IRate) {
     const [stops, setStops] = useState(-1)
 
     return (
@@ -44,7 +48,7 @@ export function TicketFilter() {
                     3 пересадки
                 </button>
             </div>
-            <TicketList stops={stops} />
+            <TicketList rate={rate} stops={stops} />
         </div>
     )
 }
