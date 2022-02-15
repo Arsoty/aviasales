@@ -102,3 +102,24 @@ form {
   border-radius: 12px;
   background-color: white;
 }
+
+.center {
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttons {
+  border: 1px solid black;
+  padding: 3vh;
+  position: fixed;
+  left: 17vh;
+  top: 38vh
+}
+
+.buttonsStops {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonsRates {
+}
