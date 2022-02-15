@@ -1,8 +1,17 @@
 import React, { useState } from 'react'
 import BuyForm from './BuyForm'
+import { ITickets } from '../types/ticket'
+
+const TK1 = 'https://logos-world.net/wp-content/'
+const TK2 = 'uploads/2020/03/Turkish-Airlines-Logo.png'
+const S7 = 'https://upload.wikimedia.org/wikipedia/commons/c/c2/S7_new_logo.svg'
+const SU1 = 'https://www.airchampion24.com/sites/default/files/'
+const SU2 = 'xaeroflot_logo_0.jpg.pagespeed.ic.vL6W6vtDFv.jpg'
+const BA1 = 'https://logos-world.net/wp-content/uploads/'
+const BA2 = '2021/02/British-Airways-Logo-1997-present.jpg'
 
 interface Tickets {
-    tickets: any[]
+    tickets: ITickets
     rate: number
     rateName: string
 }
@@ -18,28 +27,28 @@ function TicketsHandler({ tickets, rate, rateName }: Tickets) {
                         {(ticket.carrier === 'TK' && (
                             <img
                                 className="card-img-top"
-                                src="https://logos-world.net/wp-content/uploads/2020/03/Turkish-Airlines-Logo.png"
+                                src={TK1 + TK2}
                                 alt="alt"
                             />
                         )) ||
                             (ticket.carrier === 'S7' && (
                                 <img
                                     className="card-img-top"
-                                    src="https://upload.wikimedia.org/wikipedia/commons/c/c2/S7_new_logo.svg"
+                                    src={S7}
                                     alt="alt"
                                 />
                             )) ||
                             (ticket.carrier === 'SU' && (
                                 <img
                                     className="card-img-top"
-                                    src="https://www.airchampion24.com/sites/default/files/xaeroflot_logo_0.jpg.pagespeed.ic.vL6W6vtDFv.jpg"
+                                    src={SU1 + SU2}
                                     alt="alt"
                                 />
                             )) ||
                             (ticket.carrier === 'BA' && (
                                 <img
                                     className="card-img-top"
-                                    src="https://logos-world.net/wp-content/uploads/2021/02/British-Airways-Logo-1997-present.jpg"
+                                    src={BA1 + BA2}
                                     alt="alt"
                                 />
                             ))}

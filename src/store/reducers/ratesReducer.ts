@@ -15,7 +15,11 @@ export const ratesReducer = (
         case RatesActionTypes.FETCH_RATES:
             return { loading: true, error: null, rates: {} }
         case RatesActionTypes.FETCH_RATES_SUCCESS:
-            return { loading: false, error: null, rates: action.payload }
+            return {
+                loading: false,
+                error: null,
+                rates: action.payload,
+            }
         case RatesActionTypes.FETCH_RATES_ERROR:
             return { loading: false, error: action.payload, rates: {} }
         default:

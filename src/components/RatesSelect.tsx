@@ -32,8 +32,8 @@ function RatesSelect() {
                         USD
                     </button>
                 </div>
-                <div className="buttonsStops">
-                    <TicketFilter setStops={setStops} rate={rate} />
+                <div>
+                    <TicketFilter setStops={setStops} />
                 </div>
             </div>
             <div className="tickets">

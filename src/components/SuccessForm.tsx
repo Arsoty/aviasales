@@ -9,7 +9,6 @@ interface ISuccess {
 }
 
 function SuccessForm({ success, setSuccess }: ISuccess) {
-    console.log(success)
     return (
         <div
             className={success ? 'modal active' : 'modal'}

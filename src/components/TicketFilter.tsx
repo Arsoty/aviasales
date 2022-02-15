@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
-import TicketList from './TicketList'
+import React from 'react'
 
-interface IRate {
-    rate: string
+interface IStops {
     setStops: (stops: number) => void
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function TicketFilter({ rate, setStops }: IRate) {
+export function TicketFilter({ setStops }: IStops) {
     return (
         <div className="buttonsStops">
             <button
