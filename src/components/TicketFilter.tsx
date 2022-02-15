@@ -4,10 +4,36 @@ interface IStops {
     setStops: (stops: number) => void
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function TicketFilter({ setStops }: IStops) {
+export function TicketFilter({ setStops }: IStops): JSX.Element {
     return (
         <div className="buttonsStops">
+            {/* <input
+                type="checkbox"
+                className="btn btn-danger"
+                checked={() => {
+                    setStops(stopsCount)
+                }}
+            />
+            <input
+                type="checkbox"
+                className="btn btn-info"
+                onClick={() => setStops(stopsCount)}
+            />
+            <input
+                type="checkbox"
+                className="btn btn-info"
+                onClick={() => setStops(stopsCount)}
+            />
+            <input
+                type="checkbox"
+                className="btn btn-info"
+                onClick={() => setStops(stopsCount)}
+            />
+            <input
+                type="checkbox"
+                className="btn btn-info"
+                onClick={() => setStops(stopsCount)}
+            /> */}
             <button
                 type="submit"
                 className="btn btn-danger"

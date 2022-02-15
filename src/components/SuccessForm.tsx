@@ -1,14 +1,14 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
+import '../styles/SuccessFormStyles.scss'
 
 interface ISuccess {
     success: boolean
     setSuccess: (success: boolean) => void
 }
 
-function SuccessForm({ success, setSuccess }: ISuccess) {
+function SuccessForm({ success, setSuccess }: ISuccess): JSX.Element {
     return (
         <div
             className={success ? 'modal active' : 'modal'}

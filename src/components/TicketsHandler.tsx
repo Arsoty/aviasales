@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import BuyForm from './BuyForm'
 import { ITickets } from '../types/ticket'
+import '../styles/TicketHandlerStyles.scss'
 
 const TK1 = 'https://logos-world.net/wp-content/'
 const TK2 = 'uploads/2020/03/Turkish-Airlines-Logo.png'
@@ -16,8 +17,7 @@ interface Tickets {
     rateName: string
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function TicketsHandler({ tickets, rate, rateName }: Tickets) {
+function TicketsHandler({ tickets, rate, rateName }: Tickets): JSX.Element {
     const [modalActive, setModalActive] = useState(false)
     return (
         <>

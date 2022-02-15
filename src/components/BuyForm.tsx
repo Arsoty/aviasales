@@ -4,14 +4,14 @@ import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import SuccessForm from './SuccessForm'
+import '../styles/BuyFormStyles.scss'
 
 interface BuyForm {
     active: boolean
     setActive: (active: boolean) => void
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function BuyForm({ active, setActive }: BuyForm) {
+function BuyForm({ active, setActive }: BuyForm): JSX.Element {
     const [successActive, setSuccessActive] = useState(false)
 
     const formik = useFormik({

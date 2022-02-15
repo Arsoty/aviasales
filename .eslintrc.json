@@ -19,6 +19,7 @@
     },
     "plugins": ["react", "@typescript-eslint", "react-hooks"],
     "rules": {
+        "import/no-unresolved": [2, { "caseSensitive": false }],
         "import/extensions": [
             "error",
             "ignorePackages",

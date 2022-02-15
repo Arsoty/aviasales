@@ -1,0 +1,21 @@
+.card {
+  top:18vh;
+    width: 800px;
+    margin: auto;
+    .cardBody {
+      display: flex;
+      flex-direction: row;
+    }
+    .cardInfo {
+      display: flex;
+      flex-direction: row;
+    }
+    .cardText {
+      font-weight: 700;
+      font-size: 18px;
+    }
+    img {
+      max-width: 200px;
+      max-height: 150px;
+    }
+  }

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { TicketFilter } from './TicketFilter'
 import TicketList from './TicketList'
+import '../styles/RatesSelectStyles.scss'
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function RatesSelect() {
+function RatesSelect(): JSX.Element {
     const [stops, setStops] = useState(-1)
     const [rate, setRate] = useState('UAH')
     return (
