@@ -71,7 +71,8 @@ function TicketsHandler({ tickets, rate, rateName }: Tickets) {
                                     className="btn btn-warning"
                                     onClick={() => setModalActive(true)}
                                 >
-                                    {ticket.price * rate + rateName}
+                                    {(ticket.price * rate).toFixed(2) +
+                                        rateName}
                                 </button>
                             </p>
                         </div>

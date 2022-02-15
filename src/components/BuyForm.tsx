@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { formatDiagnosticsWithColorAndContext } from 'typescript'
+import SuccessForm from './SuccessForm'
 
 interface BuyForm {
     active: boolean
@@ -12,6 +13,8 @@ interface BuyForm {
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 function BuyForm({ active, setActive }: BuyForm) {
+    const [successActive, setSuccessActive] = useState(false)
+
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -150,12 +153,30 @@ function BuyForm({ active, setActive }: BuyForm) {
                         <p className="error">{formik.errors.passportNumber}</p>
                     ) : null}
                     <div className="form-check">
-                        <button type="submit" className="btn btn-primary">
-                            Отправить
-                        </button>
+                        {!formik.errors.email &&
+                        !formik.errors.passportNumber &&
+                        !formik.errors.phoneNumber &&
+                        !formik.errors.secondName &&
+                        !formik.errors.firstName ? (
+                            <button
+                                onClick={() => setSuccessActive(true)}
+                                type="submit"
+                                className="btn btn-primary"
+                            >
+                                Отправить
+                            </button>
+                        ) : (
+                            <button type="submit" className="btn btn-primary">
+                                Отправить
+                            </button>
+                        )}
                     </div>
                 </form>
             </div>
+            <SuccessForm
+                success={successActive}
+                setSuccess={setSuccessActive}
+            />
         </div>
     )
 }

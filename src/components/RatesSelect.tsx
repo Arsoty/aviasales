@@ -9,21 +9,21 @@ function RatesSelect() {
             <button
                 onClick={() => setRate('UAH')}
                 type="submit"
-                className="btn btn-danger"
+                className="btn btn-success"
             >
                 UAH
             </button>
             <button
                 onClick={() => setRate('RUB')}
                 type="submit"
-                className="btn btn-danger"
+                className="btn btn-success"
             >
                 RUB
             </button>
             <button
                 onClick={() => setRate('USD')}
                 type="submit"
-                className="btn btn-danger"
+                className="btn btn-success"
             >
                 USD
             </button>
