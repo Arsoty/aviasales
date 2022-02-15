@@ -157,7 +157,12 @@ function BuyForm({ active, setActive }: BuyForm) {
                         !formik.errors.passportNumber &&
                         !formik.errors.phoneNumber &&
                         !formik.errors.secondName &&
-                        !formik.errors.firstName ? (
+                        !formik.errors.firstName &&
+                        formik.values.email &&
+                        formik.values.firstName &&
+                        formik.values.passportNumber &&
+                        formik.values.phoneNumber &&
+                        formik.values.secondName ? (
                             <button
                                 onClick={() => setSuccessActive(true)}
                                 type="submit"
