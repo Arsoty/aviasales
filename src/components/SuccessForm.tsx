@@ -6,13 +6,21 @@ import '../styles/SuccessFormStyles.scss'
 interface ISuccess {
     success: boolean
     setSuccess: (success: boolean) => void
+    setActive: (active: boolean) => void
 }
 
-function SuccessForm({ success, setSuccess }: ISuccess): JSX.Element {
+function SuccessForm({
+    success,
+    setSuccess,
+    setActive,
+}: ISuccess): JSX.Element {
     return (
         <div
             className={success ? 'modal active' : 'modal'}
-            onClick={() => setSuccess(false)}
+            onClick={() => {
+                setSuccess(false)
+                setActive(false)
+            }}
         >
             <div className="modalContent" onClick={(e) => e.stopPropagation()}>
                 <div className="alert alert-success" role="alert">

@@ -4,12 +4,27 @@ import { useTypedSelector } from '../hooks/useTypeSelector'
 import { fetchTickets } from '../store/actionCreators/tickets'
 import TicketsHandler from './TicketsHandler'
 import { fetchRates } from '../store/actionCreators/rates'
-import { IRates } from '../types/rates'
 
 interface Prop {
     stops: number
     rate: string
 }
+
+type TStops = {
+    '-1': boolean
+    '0': boolean
+    '1': boolean
+    '2': boolean
+    '3': boolean
+}
+
+// stops = {
+//     '-1': true,
+//     '0': false,
+//     '1': false,
+//     '2': false,
+//     '3': false,
+// },
 
 function TicketList({ stops = -1, rate = 'UAH' }: Prop): JSX.Element {
     const { tickets, error, loading } = useTypedSelector(
@@ -18,32 +33,12 @@ function TicketList({ stops = -1, rate = 'UAH' }: Prop): JSX.Element {
 
     const { rates } = useTypedSelector((state) => state.rate)
 
-    const myRate = rates as IRates
-
-    const rateToConvert = myRate[rate]
-
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchTickets())
+        dispatch(fetchTickets({ stops }))
         dispatch(fetchRates())
-        tickets.sort((a, b) => a.price - b.price)
-    }, [])
-
-    if (stops === -1) {
-        tickets.sort((a, b) => a.price - b.price)
-    } else {
-        const filteredTickets = tickets.filter(
-            (ticket) => ticket.stops === stops
-        )
-        return (
-            <TicketsHandler
-                rate={rateToConvert}
-                rateName={rate}
-                tickets={filteredTickets}
-            />
-        )
-    }
+    }, [stops, dispatch])
 
     if (loading) {
         return <div>Загрузка билетов!</div>
@@ -51,12 +46,9 @@ function TicketList({ stops = -1, rate = 'UAH' }: Prop): JSX.Element {
     if (error) {
         return <div>{error}</div>
     }
+
     return (
-        <TicketsHandler
-            rate={rateToConvert}
-            rateName={rate}
-            tickets={tickets}
-        />
+        <TicketsHandler rate={rates[rate]} rateName={rate} tickets={tickets} />
     )
 }
 

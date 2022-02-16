@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import BuyForm from './BuyForm'
 import { ITickets } from '../types/ticket'
 import '../styles/TicketHandlerStyles.scss'
+import SuccessForm from './SuccessForm'
 
 const TK1 = 'https://logos-world.net/wp-content/'
 const TK2 = 'uploads/2020/03/Turkish-Airlines-Logo.png'
@@ -19,6 +20,7 @@ interface Tickets {
 
 function TicketsHandler({ tickets, rate, rateName }: Tickets): JSX.Element {
     const [modalActive, setModalActive] = useState(false)
+    const [successActive, setSuccessActive] = useState(false)
     return (
         <>
             {tickets.map((ticket) => (
@@ -88,7 +90,16 @@ function TicketsHandler({ tickets, rate, rateName }: Tickets): JSX.Element {
                     </div>
                 </div>
             ))}
-            <BuyForm active={modalActive} setActive={setModalActive} />
+            <BuyForm
+                active={modalActive}
+                setActive={setModalActive}
+                setSuccess={setSuccessActive}
+            />
+            <SuccessForm
+                success={successActive}
+                setSuccess={setSuccessActive}
+                setActive={setModalActive}
+            />
         </>
     )
 }

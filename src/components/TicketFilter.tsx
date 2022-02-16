@@ -1,5 +1,13 @@
 import React from 'react'
 
+type TStops = {
+    '-1': boolean
+    '0': boolean
+    '1': boolean
+    '2': boolean
+    '3': boolean
+}
+
 interface IStops {
     setStops: (stops: number) => void
 }
@@ -10,29 +18,47 @@ export function TicketFilter({ setStops }: IStops): JSX.Element {
             {/* <input
                 type="checkbox"
                 className="btn btn-danger"
-                checked={() => {
-                    setStops(stopsCount)
+                value={-1}
+                onChange={(e) => {
+                    // setStops(stopsCount)
+                    console.log(e.target.value)
                 }}
             />
             <input
                 type="checkbox"
                 className="btn btn-info"
-                onClick={() => setStops(stopsCount)}
+                value={0}
+                onChange={(e) => {
+                    // setStops(stopsCount)
+                    console.log(e.target.value)
+                }}
             />
             <input
                 type="checkbox"
                 className="btn btn-info"
-                onClick={() => setStops(stopsCount)}
+                value={1}
+                onChange={(e) => {
+                    // setStops(stopsCount)
+                    console.log(e.target.value)
+                }}
             />
             <input
                 type="checkbox"
                 className="btn btn-info"
-                onClick={() => setStops(stopsCount)}
+                value={2}
+                onChange={(e) => {
+                    // setStops(stopsCount)
+                    console.log(e.target.value)
+                }}
             />
             <input
                 type="checkbox"
                 className="btn btn-info"
-                onClick={() => setStops(stopsCount)}
+                value={3}
+                onChange={(e) => {
+                    // setStops(stopsCount)
+                    console.log(e.target.value)
+                }}
             /> */}
             <button
                 type="submit"

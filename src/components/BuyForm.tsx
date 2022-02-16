@@ -1,19 +1,17 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react'
+import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import SuccessForm from './SuccessForm'
 import '../styles/BuyFormStyles.scss'
 
 interface BuyForm {
     active: boolean
     setActive: (active: boolean) => void
+    setSuccess: (active: boolean) => void
 }
 
-function BuyForm({ active, setActive }: BuyForm): JSX.Element {
-    const [successActive, setSuccessActive] = useState(false)
-
+function BuyForm({ active, setActive, setSuccess }: BuyForm): JSX.Element {
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -40,14 +38,9 @@ function BuyForm({ active, setActive }: BuyForm): JSX.Element {
                 .required('Обязательно'),
         }),
         onSubmit: (values) => {
-            console.log(values)
+            sessionStorage.firstName = values.firstName
         },
     })
-    // console.log(active)
-
-    // useEffect(() => {
-    //     setActive(false)
-    // }, [])
 
     return (
         <div
@@ -163,7 +156,7 @@ function BuyForm({ active, setActive }: BuyForm): JSX.Element {
                         formik.values.phoneNumber &&
                         formik.values.secondName ? (
                             <button
-                                onClick={() => setSuccessActive(true)}
+                                onClick={() => setSuccess(true)}
                                 type="submit"
                                 className="btn btn-primary"
                             >
@@ -177,10 +170,6 @@ function BuyForm({ active, setActive }: BuyForm): JSX.Element {
                     </div>
                 </form>
             </div>
-            <SuccessForm
-                success={successActive}
-                setSuccess={setSuccessActive}
-            />
         </div>
     )
 }
