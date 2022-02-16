@@ -6,27 +6,11 @@ import TicketsHandler from './TicketsHandler'
 import { fetchRates } from '../store/actionCreators/rates'
 
 interface Prop {
-    stops: number
+    stops: Array<number>
     rate: string
 }
 
-type TStops = {
-    '-1': boolean
-    '0': boolean
-    '1': boolean
-    '2': boolean
-    '3': boolean
-}
-
-// stops = {
-//     '-1': true,
-//     '0': false,
-//     '1': false,
-//     '2': false,
-//     '3': false,
-// },
-
-function TicketList({ stops = -1, rate = 'UAH' }: Prop): JSX.Element {
+function TicketList({ stops = [], rate = 'UAH' }: Prop): JSX.Element {
     const { tickets, error, loading } = useTypedSelector(
         (state) => state.ticket
     )

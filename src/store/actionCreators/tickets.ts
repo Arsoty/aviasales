@@ -5,18 +5,18 @@ const url1 = 'https://raw.githubusercontent.com/'
 const url2 = 'BrowningForce/aviasales-react/master/tickets.json'
 
 interface Stops {
-    stops: number
+    stops: Array<number>
 }
 
 export const fetchTickets =
-    ({ stops = -1 }: Stops) =>
+    ({ stops }: Stops) =>
     async (dispatch: Dispatch<TicketAction>) => {
         try {
             dispatch({ type: TicketActionTypes.FETCH_TICKETS })
             const response = await fetch(url1 + url2).then((data) =>
                 data.json()
             )
-            if (stops === -1) {
+            if (stops.includes(-1)) {
                 dispatch({
                     type: TicketActionTypes.FETCH_TICKETS_SUCCESS,
                     payload: response.tickets.sort(
@@ -28,7 +28,7 @@ export const fetchTickets =
                     type: TicketActionTypes.FETCH_TICKETS_SUCCESS,
                     payload: response.tickets
                         .sort((a: ITicket, b: ITicket) => a.price - b.price)
-                        .filter((el: ITicket) => el.stops === stops),
+                        .filter((el: ITicket) => stops.includes(el.stops)),
                 })
             }
         } catch (e) {

@@ -1,100 +1,94 @@
-import React from 'react'
+import React, { useState } from 'react'
+import RatesSelect from './RatesSelect'
+import '../styles/TicketFilterStyles.scss'
 
-type TStops = {
-    '-1': boolean
-    '0': boolean
-    '1': boolean
-    '2': boolean
-    '3': boolean
-}
+export function TicketFilter(): JSX.Element {
+    const [all, setAll] = useState(true)
+    const [zero, setZero] = useState(false)
+    const [one, setOne] = useState(false)
+    const [two, setTwo] = useState(false)
+    const [three, setThree] = useState(false)
 
-interface IStops {
-    setStops: (stops: number) => void
-}
+    function filterStops(
+        allS: boolean,
+        oneS: boolean,
+        twoS: boolean,
+        threeS: boolean,
+        zeroS: boolean
+    ): Array<number> {
+        const arr = []
+        if (allS) {
+            arr.push(-1)
+        }
+        if (oneS) {
+            arr.push(1)
+        }
+        if (twoS) {
+            arr.push(2)
+        }
+        if (threeS) {
+            arr.push(3)
+        }
+        if (zeroS) {
+            arr.push(0)
+        }
+        return arr
+    }
 
-export function TicketFilter({ setStops }: IStops): JSX.Element {
     return (
-        <div className="buttonsStops">
-            {/* <input
-                type="checkbox"
-                className="btn btn-danger"
-                value={-1}
-                onChange={(e) => {
-                    // setStops(stopsCount)
-                    console.log(e.target.value)
-                }}
-            />
-            <input
-                type="checkbox"
-                className="btn btn-info"
-                value={0}
-                onChange={(e) => {
-                    // setStops(stopsCount)
-                    console.log(e.target.value)
-                }}
-            />
-            <input
-                type="checkbox"
-                className="btn btn-info"
-                value={1}
-                onChange={(e) => {
-                    // setStops(stopsCount)
-                    console.log(e.target.value)
-                }}
-            />
-            <input
-                type="checkbox"
-                className="btn btn-info"
-                value={2}
-                onChange={(e) => {
-                    // setStops(stopsCount)
-                    console.log(e.target.value)
-                }}
-            />
-            <input
-                type="checkbox"
-                className="btn btn-info"
-                value={3}
-                onChange={(e) => {
-                    // setStops(stopsCount)
-                    console.log(e.target.value)
-                }}
-            /> */}
-            <button
-                type="submit"
-                className="btn btn-danger"
-                onClick={() => setStops(-1)}
-            >
-                Сбросить фильтр
-            </button>
-            <button
-                type="submit"
-                className="btn btn-info"
-                onClick={() => setStops(0)}
-            >
-                Без пересадкок
-            </button>
-            <button
-                type="submit"
-                className="btn btn-info"
-                onClick={() => setStops(1)}
-            >
+        <div className="main">
+            <div className="mainContent">
+                <input
+                    type="checkbox"
+                    className="btn btn-danger"
+                    value={-1}
+                    onChange={() => {
+                        setAll(!all)
+                    }}
+                    checked={!!all}
+                />
+                Все варианты
+                <input
+                    type="checkbox"
+                    className="btn btn-info"
+                    value={0}
+                    onChange={() => {
+                        setZero(!zero)
+                    }}
+                    checked={!!zero || !!all}
+                />
+                Без пересадок
+                <input
+                    type="checkbox"
+                    className="btn btn-info"
+                    value={1}
+                    onChange={() => setOne(!one)}
+                    checked={!!one || !!all}
+                />
                 1 пересадка
-            </button>
-            <button
-                type="submit"
-                className="btn btn-info"
-                onClick={() => setStops(2)}
-            >
+                <input
+                    type="checkbox"
+                    className="btn btn-info"
+                    value={2}
+                    onChange={() => {
+                        setTwo(!two)
+                    }}
+                    checked={!!two || !!all}
+                />
                 2 пересадки
-            </button>
-            <button
-                type="submit"
-                className="btn btn-info"
-                onClick={() => setStops(3)}
-            >
+                <input
+                    type="checkbox"
+                    className="btn btn-info"
+                    value={3}
+                    onChange={() => {
+                        setThree(!three)
+                    }}
+                    checked={!!three || !!all}
+                />
                 3 пересадки
-            </button>
+            </div>
+
+            <RatesSelect stopsList={filterStops(all, one, two, three, zero)} />
         </div>
     )
 }

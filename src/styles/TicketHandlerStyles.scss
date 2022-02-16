@@ -1,10 +1,11 @@
 .card {
-  top:18vh;
-    width: 100%;
+    top: 6vh;
+    width: 50%;
     margin: auto;
     .cardBody {
       display: flex;
       flex-direction: row;
+      justify-content: center;
     }
     .cardInfo {
       display: flex;

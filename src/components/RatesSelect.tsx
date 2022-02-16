@@ -1,21 +1,15 @@
 import React, { useState } from 'react'
-import { TicketFilter } from './TicketFilter'
 import TicketList from './TicketList'
 import '../styles/RatesSelectStyles.scss'
 
-// {
-//     '-1': false,
-//     '0': false,
-//     '1': false,
-//     '2': false,
-//     '3': false,
-// }
+interface IStop {
+    stopsList: Array<number>
+}
 
-function RatesSelect(): JSX.Element {
-    const [stops, setStops] = useState(-1)
+function RatesSelect({ stopsList }: IStop): JSX.Element {
     const [rate, setRate] = useState('UAH')
     return (
-        <div className="center">
+        <div className="rates">
             <div className="buttons">
                 <div className="buttonsRates">
                     <button
@@ -40,12 +34,9 @@ function RatesSelect(): JSX.Element {
                         USD
                     </button>
                 </div>
-                <div>
-                    <TicketFilter setStops={setStops} />
-                </div>
             </div>
             <div className="tickets">
-                <TicketList rate={rate} stops={stops} />
+                <TicketList rate={rate} stops={stopsList} />
             </div>
         </div>
     )
