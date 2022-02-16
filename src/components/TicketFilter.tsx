@@ -87,7 +87,6 @@ export function TicketFilter(): JSX.Element {
                 />
                 3 пересадки
             </div>
-
             <RatesSelect stopsList={filterStops(all, one, two, three, zero)} />
         </div>
     )

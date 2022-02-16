@@ -8,6 +8,7 @@ interface IStop {
 
 function RatesSelect({ stopsList }: IStop): JSX.Element {
     const [rate, setRate] = useState('UAH')
+    console.log(stopsList)
     return (
         <div className="rates">
             <div className="buttons">
@@ -35,9 +36,17 @@ function RatesSelect({ stopsList }: IStop): JSX.Element {
                     </button>
                 </div>
             </div>
-            <div className="tickets">
-                <TicketList rate={rate} stops={stopsList} />
-            </div>
+            {stopsList.length ? (
+                <div className="tickets">
+                    <TicketList rate={rate} stops={stopsList} />
+                </div>
+            ) : (
+                <div className="tickets">
+                    <div className="alert alert-danger card" role="alert">
+                        Выберите хотя бы один из вариантов!
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
