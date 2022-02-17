@@ -4,13 +4,9 @@ import { useTypedSelector } from '../hooks/useTypeSelector'
 import { fetchTickets } from '../store/actionCreators/tickets'
 import TicketsHandler from './TicketsHandler'
 import { fetchRates } from '../store/actionCreators/rates'
+import Alert from './Alert'
 
-interface Prop {
-    stops: Array<number>
-    rate: string
-}
-
-function TicketList({ stops = [], rate = 'UAH' }: Prop): JSX.Element {
+function TicketList(): JSX.Element {
     const { tickets, error, loading } = useTypedSelector(
         (state) => state.ticket
     )
@@ -19,12 +15,14 @@ function TicketList({ stops = [], rate = 'UAH' }: Prop): JSX.Element {
 
     const variable = useTypedSelector((state) => state.stops)
 
+    const rate = useTypedSelector((state) => state.ratechange)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(fetchTickets(variable))
-        dispatch(fetchRates())
-    }, [stops, dispatch, variable])
+        dispatch(fetchRates(rates))
+    }, [dispatch, variable])
 
     if (loading) {
         return <div>Загрузка билетов!</div>
@@ -33,8 +31,14 @@ function TicketList({ stops = [], rate = 'UAH' }: Prop): JSX.Element {
         return <div>{error}</div>
     }
 
-    return (
-        <TicketsHandler rate={rates[rate]} rateName={rate} tickets={tickets} />
+    return tickets.length ? (
+        <TicketsHandler
+            rate={rates[rate.rate]}
+            rateName={rate.rate}
+            tickets={tickets}
+        />
+    ) : (
+        <Alert />
     )
 }
 

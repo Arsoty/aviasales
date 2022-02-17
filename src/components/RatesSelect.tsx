@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import TicketList from './TicketList'
 import '../styles/RatesSelectStyles.scss'
+import { getRates } from '../store/actionCreators/rates'
 
-interface IStop {
-    stopsList: Array<number>
-}
-
-function RatesSelect({ stopsList }: IStop): JSX.Element {
+function RatesSelect(): JSX.Element {
     const [rate, setRate] = useState('UAH')
+
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getRates(rate))
+    }, [dispatch, rate])
+
     return (
         <div className="rates">
             <div className="buttons">
@@ -35,17 +39,6 @@ function RatesSelect({ stopsList }: IStop): JSX.Element {
                     </button>
                 </div>
             </div>
-            {stopsList.length ? (
-                <div className="tickets">
-                    <TicketList rate={rate} stops={stopsList} />
-                </div>
-            ) : (
-                <div className="tickets">
-                    <div className="alert alert-danger card" role="alert">
-                        Выберите хотя бы один из вариантов!
-                    </div>
-                </div>
-            )}
         </div>
     )
 }

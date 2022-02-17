@@ -26,6 +26,3 @@ export const ratesReducer = (
             return state
     }
 }
-const arr = [
-    1111111111111111, 1111111111111, 1111111111111111, 1111111111111111, 11,
-]
