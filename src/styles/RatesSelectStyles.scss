@@ -1,3 +1,4 @@
+@media (max-width: 768px) {
 .buttonsRates {
     background-color: black;
     position: fixed;
@@ -6,7 +7,23 @@
 }
 
 .card {
-    top: 6vh;
-    width: 50%;
+    top: 36vh;
+    width: 100%;
     margin: auto;
   }
+}
+
+@media (min-width: 769px) {
+    .buttonsRates {
+        background-color: black;
+        position: fixed;
+        width: 100%;
+        z-index: 100;
+    }
+    
+    .card {
+        top: 6vh;
+        width: 50%;
+        margin: auto;
+      }
+}

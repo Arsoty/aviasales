@@ -2,6 +2,7 @@ export interface TicketState {
     tickets: ITickets
     loading: boolean
     error: null | string
+    stops: Array<number>
 }
 
 export type ITickets = ITicket[]
@@ -34,6 +35,7 @@ interface FetchTicketsAction {
 interface FetchTicketsSuccessAction {
     type: TicketActionTypes.FETCH_TICKETS_SUCCESS
     payload: ITickets
+    stops: Array<number>
 }
 
 interface FetchTicketsErrorAction {

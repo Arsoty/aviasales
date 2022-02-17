@@ -22,6 +22,7 @@ export const fetchTickets =
                     payload: response.tickets.sort(
                         (a: ITicket, b: ITicket) => a.price - b.price
                     ),
+                    stops,
                 })
             } else {
                 dispatch({
@@ -29,6 +30,7 @@ export const fetchTickets =
                     payload: response.tickets
                         .sort((a: ITicket, b: ITicket) => a.price - b.price)
                         .filter((el: ITicket) => stops.includes(el.stops)),
+                    stops,
                 })
             }
         } catch (e) {

@@ -17,12 +17,14 @@ function TicketList({ stops = [], rate = 'UAH' }: Prop): JSX.Element {
 
     const { rates } = useTypedSelector((state) => state.rate)
 
+    const variable = useTypedSelector((state) => state.stops)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchTickets({ stops }))
+        dispatch(fetchTickets(variable))
         dispatch(fetchRates())
-    }, [stops, dispatch])
+    }, [stops, dispatch, variable])
 
     if (loading) {
         return <div>Загрузка билетов!</div>

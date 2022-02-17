@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import RatesSelect from './RatesSelect'
 import '../styles/TicketFilterStyles.scss'
+import { useDispatch } from 'react-redux'
+import RatesSelect from './RatesSelect'
+import { getStops } from '../store/actionCreators/stops'
 
 export function TicketFilter(): JSX.Element {
     const [all, setAll] = useState(true)
@@ -34,6 +36,9 @@ export function TicketFilter(): JSX.Element {
         }
         return arr
     }
+
+    const dispatch = useDispatch()
+    dispatch(getStops(filterStops(all, one, two, three, zero)))
 
     return (
         <div className="main">

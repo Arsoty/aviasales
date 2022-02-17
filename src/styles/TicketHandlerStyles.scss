@@ -1,10 +1,11 @@
+@media (max-width: 768px) {
 .card {
     top: 6vh;
-    width: 50%;
+    width: 100%;
     margin: auto;
     .cardBody {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: center;
     }
     .cardInfo {
@@ -16,10 +17,39 @@
       font-size: 18px;
     }
     img {
-      max-width: 200px;
-      max-height: 150px;
+      max-width: 100px;
+      max-height: 100px;
+      margin: auto
     }
     button {
       min-width: 150px;
     }
   }
+}
+
+@media (min-width: 769px) {
+.card {
+  top: 6vh;
+  width: 100%;
+  margin: auto;
+  .cardBody {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .cardInfo {
+    display: flex;
+    flex-direction: row;
+  }
+  .cardText {
+    font-weight: 700;
+    font-size: 18px;
+  }
+  img {
+    max-width: 200px;
+    max-height: 150px;
+  }
+  button {
+    min-width: 150px;
+  }
+}}

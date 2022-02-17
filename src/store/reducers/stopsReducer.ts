@@ -1,26 +1,18 @@
-// import { TicketState } from '../../types/ticket'
+import { StopsState, StopsActionTypes, StopsAction } from '../../types/stops'
 
-// const initialState: TicketState = {
-//     tickets: [],
-//     loading: false,
-//     error: null,
-// }
+const initialState: StopsState = {
+    stops: [],
+}
 
-// export const ticketReducer = (
-//     // eslint-disable-next-line default-param-last
-//     state = initialState,
-//     action: StopsAction
-// ): TicketState => {
-//     switch (action.type) {
-//         case TicketActionTypes.FETCH_TICKETS:
-//             return { loading: true, error: null, tickets: [] }
-//         case TicketActionTypes.FETCH_TICKETS_SUCCESS:
-//             return { loading: false, error: null, tickets: action.payload }
-//         case TicketActionTypes.FETCH_TICKETS_ERROR:
-//             return { loading: false, error: action.payload, tickets: [] }
-//         default:
-//             return state
-//     }
-// }
-
-export {}
+export const stopsReducer = (
+    // eslint-disable-next-line default-param-last
+    state = initialState,
+    action: StopsAction
+): StopsState => {
+    switch (action.type) {
+        case StopsActionTypes.STOPS_CHANGE:
+            return { stops: action.payload }
+        default:
+            return state
+    }
+}

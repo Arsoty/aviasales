@@ -1,27 +1,14 @@
-// export enum RatesActionTypes {
-//     NO_STOPS = 'NO_STOPS',
-//     ONE_STOP = 'ONE_STOP',
-//     TWO_STOPS = ' TWO_STOPS',
-//     THREE_STOPS = 'THREE_STOPS',
-// }
+export interface StopsState {
+    stops: Array<number>
+}
 
-// interface FetchRatesAction {
-//     type: RatesActionTypes.FETCH_RATES
-// }
+export enum StopsActionTypes {
+    STOPS_CHANGE = 'STOPS_CHANGE',
+}
 
-// interface FetchRatesSuccessAction {
-//     type: RatesActionTypes.FETCH_RATES_SUCCESS
-//     payload: IRates
-// }
+export interface GetStopsAction {
+    type: StopsActionTypes.STOPS_CHANGE
+    payload: Array<number>
+}
 
-// interface FetchRatesErrorAction {
-//     type: RatesActionTypes.FETCH_RATES_ERROR
-//     payload: string
-// }
-
-// export type RatesAction =
-//     | FetchRatesAction
-//     | FetchRatesSuccessAction
-//     | FetchRatesErrorAction
-
-export {}
+export type StopsAction = GetStopsAction
