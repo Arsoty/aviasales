@@ -29,7 +29,7 @@ interface FetchRatesErrorAction {
     payload: string
 }
 
-export type RatesAction =
+export type TRatesAction =
     | FetchRatesAction
     | FetchRatesSuccessAction
     | FetchRatesErrorAction
@@ -43,5 +43,3 @@ export interface RatesChangeAction {
     type: RatesActionTypes.RATES_CHANGE
     payload: string
 }
-
-export type RatesChangeTypes = RatesChangeAction

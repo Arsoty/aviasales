@@ -1,17 +1,21 @@
-import { StopsState, StopsActionTypes, StopsAction } from '../../types/stops'
+import { StopsState, StopsActionTypes, TStopsAction } from '../../types/stops'
 
 const initialState: StopsState = {
-    stops: [],
+    stops: [-1],
 }
 
 export const stopsReducer = (
     // eslint-disable-next-line default-param-last
     state = initialState,
-    action: StopsAction
+    action: TStopsAction
 ): StopsState => {
     switch (action.type) {
         case StopsActionTypes.STOPS_CHANGE:
-            return { stops: action.payload }
+            return {
+                stops: state.stops.includes(action.payload)
+                    ? state.stops.filter((stop) => stop !== action.payload)
+                    : [...state.stops, action.payload],
+            }
         default:
             return state
     }

@@ -2,25 +2,19 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
 import '../styles/SuccessFormStyles.scss'
+import { useDispatch } from 'react-redux'
+import { getModals } from '../store/actionCreators/modals'
 
 interface ISuccess {
     success: boolean
-    setSuccess: (success: boolean) => void
-    setActive: (active: boolean) => void
 }
 
-function SuccessForm({
-    success,
-    setSuccess,
-    setActive,
-}: ISuccess): JSX.Element {
+function SuccessForm({ success }: ISuccess): JSX.Element {
+    const dispatch = useDispatch()
     return (
         <div
             className={success ? 'modal active' : 'modal'}
-            onClick={() => {
-                setSuccess(false)
-                setActive(false)
-            }}
+            onClick={() => dispatch(getModals(true))}
         >
             <div className="modalContent" onClick={(e) => e.stopPropagation()}>
                 <div className="alert alert-success" role="alert">

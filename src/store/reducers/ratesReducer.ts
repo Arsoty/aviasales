@@ -1,4 +1,4 @@
-import { RatesAction, RatesActionTypes, RatesState } from '../../types/rates'
+import { TRatesAction, RatesActionTypes, RatesState } from '../../types/rates'
 
 const initialState: RatesState = {
     rates: {},
@@ -9,7 +9,7 @@ const initialState: RatesState = {
 export const ratesReducer = (
     // eslint-disable-next-line default-param-last
     state = initialState,
-    action: RatesAction
+    action: TRatesAction
 ): RatesState => {
     switch (action.type) {
         case RatesActionTypes.FETCH_RATES:

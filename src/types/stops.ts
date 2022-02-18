@@ -8,7 +8,7 @@ export enum StopsActionTypes {
 
 export interface GetStopsAction {
     type: StopsActionTypes.STOPS_CHANGE
-    payload: Array<number>
+    payload: number
 }
 
-export type StopsAction = GetStopsAction
+export type TStopsAction = GetStopsAction

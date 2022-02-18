@@ -25,7 +25,6 @@ export enum TicketActionTypes {
     FETCH_TICKETS = 'FETCH_TICKETS',
     FETCH_TICKETS_SUCCESS = 'FETCH_TICKETS_SUCCESS',
     FETCH_TICKETS_ERROR = 'FETCH_TICKETS_ERROR',
-    TICKETS_FILTER = 'TICKETS_FILTER',
 }
 
 interface FetchTicketsAction {
@@ -43,13 +42,7 @@ interface FetchTicketsErrorAction {
     payload: string
 }
 
-interface TicketsFilter {
-    type: TicketActionTypes.TICKETS_FILTER
-    payload: ITickets
-}
-
-export type TicketAction =
+export type TTicketAction =
     | FetchTicketsAction
     | FetchTicketsSuccessAction
     | FetchTicketsErrorAction
-    | TicketsFilter

@@ -2,11 +2,14 @@
 .card {
     top: 6vh;
     width: 100%;
-    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(239, 223, 250);
     .cardBody {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      margin:auto;
     }
     .cardInfo {
       display: flex;
@@ -19,7 +22,7 @@
     img {
       max-width: 100px;
       max-height: 100px;
-      margin: auto
+      margin: auto;
     }
     button {
       min-width: 150px;
@@ -32,10 +35,12 @@
   top: 6vh;
   width: 100%;
   margin: auto;
+  background-color: rgb(239, 223, 250);
   .cardBody {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin: auto;
   }
   .cardInfo {
     display: flex;

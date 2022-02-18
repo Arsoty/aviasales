@@ -4,14 +4,15 @@ import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import '../styles/BuyFormStyles.scss'
+import { useDispatch } from 'react-redux'
+import { getModals } from '../store/actionCreators/modals'
 
-interface BuyForm {
+interface IBuyForm {
     active: boolean
-    setActive: (active: boolean) => void
-    setSuccess: (active: boolean) => void
 }
 
-function BuyForm({ active, setActive, setSuccess }: BuyForm): JSX.Element {
+function BuyForm({ active }: IBuyForm): JSX.Element {
+    const dispatch = useDispatch()
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -45,7 +46,7 @@ function BuyForm({ active, setActive, setSuccess }: BuyForm): JSX.Element {
     return (
         <div
             className={active ? 'modal active' : 'modal'}
-            onClick={() => setActive(false)}
+            onClick={() => dispatch(getModals(false))}
         >
             <div className="modalContent" onClick={(e) => e.stopPropagation()}>
                 <form onSubmit={formik.handleSubmit}>
@@ -156,7 +157,7 @@ function BuyForm({ active, setActive, setSuccess }: BuyForm): JSX.Element {
                         formik.values.phoneNumber &&
                         formik.values.secondName ? (
                             <button
-                                onClick={() => setSuccess(true)}
+                                onClick={() => dispatch(getModals(false))}
                                 type="submit"
                                 className="btn btn-primary"
                             >

@@ -1,5 +1,5 @@
 import {
-    TicketAction,
+    TTicketAction,
     TicketActionTypes,
     TicketState,
 } from '../../types/ticket'
@@ -14,7 +14,7 @@ const initialState: TicketState = {
 export const ticketReducer = (
     // eslint-disable-next-line default-param-last
     state = initialState,
-    action: TicketAction
+    action: TTicketAction
 ): TicketState => {
     switch (action.type) {
         case TicketActionTypes.FETCH_TICKETS:

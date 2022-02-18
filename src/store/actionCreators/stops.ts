@@ -1,8 +1,8 @@
 import { Dispatch } from 'react'
-import { StopsActionTypes, StopsAction } from '../../types/stops'
+import { StopsActionTypes, TStopsAction } from '../../types/stops'
 
 export const getStops =
-    (stops: Array<number>) => async (dispatch: Dispatch<StopsAction>) => {
+    (stops: number) => async (dispatch: Dispatch<TStopsAction>) => {
         dispatch({
             type: StopsActionTypes.STOPS_CHANGE,
             payload: stops,

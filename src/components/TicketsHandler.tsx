@@ -1,26 +1,33 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useDispatch } from 'react-redux'
 import BuyForm from './BuyForm'
 import { ITickets } from '../types/ticket'
 import '../styles/TicketHandlerStyles.scss'
 import SuccessForm from './SuccessForm'
+import { useTypedSelector } from '../hooks/useTypeSelector'
+import { getModals } from '../store/actionCreators/modals'
 
 const TK1 = 'https://logos-world.net/wp-content/'
 const TK2 = 'uploads/2020/03/Turkish-Airlines-Logo.png'
 const S7 = 'https://upload.wikimedia.org/wikipedia/commons/c/c2/S7_new_logo.svg'
-const SU1 = 'https://www.airchampion24.com/sites/default/files/'
-const SU2 = 'xaeroflot_logo_0.jpg.pagespeed.ic.vL6W6vtDFv.jpg'
-const BA1 = 'https://logos-world.net/wp-content/uploads/'
-const BA2 = '2021/02/British-Airways-Logo-1997-present.jpg'
+const SU1 = 'https://papik.pro/uploads/posts/2021-11/thumbs'
+const SU2 = '/1636117382_50-papik-pro-p-aeroflot-logotip-foto-56.png'
+const BA1 = 'https://logos-world.net/wp-content/'
+const BA2 = 'uploads/2021/02/British-Airways-Logo.png'
 
-interface Tickets {
+interface ITicketsHandler {
     tickets: ITickets
     rate: number
     rateName: string
 }
 
-function TicketsHandler({ tickets, rate, rateName }: Tickets): JSX.Element {
-    const [modalActive, setModalActive] = useState(false)
-    const [successActive, setSuccessActive] = useState(false)
+function TicketsHandler({
+    tickets,
+    rate,
+    rateName,
+}: ITicketsHandler): JSX.Element {
+    const modals = useTypedSelector((state) => state.modals)
+    const dispatch = useDispatch()
     return (
         <>
             {tickets.map((ticket) => (
@@ -28,28 +35,24 @@ function TicketsHandler({ tickets, rate, rateName }: Tickets): JSX.Element {
                     <div className="cardBody">
                         {(ticket.carrier === 'TK' && (
                             <img
-                                className="card-img-top"
+                                className="card-img"
                                 src={TK1 + TK2}
                                 alt="alt"
                             />
                         )) ||
                             (ticket.carrier === 'S7' && (
-                                <img
-                                    className="card-img-top"
-                                    src={S7}
-                                    alt="alt"
-                                />
+                                <img className="card-img" src={S7} alt="alt" />
                             )) ||
                             (ticket.carrier === 'SU' && (
                                 <img
-                                    className="card-img-top"
+                                    className="card-img"
                                     src={SU1 + SU2}
                                     alt="alt"
                                 />
                             )) ||
                             (ticket.carrier === 'BA' && (
                                 <img
-                                    className="card-img-top"
+                                    className="card-img"
                                     src={BA1 + BA2}
                                     alt="alt"
                                 />
@@ -80,7 +83,7 @@ function TicketsHandler({ tickets, rate, rateName }: Tickets): JSX.Element {
                                 <button
                                     type="submit"
                                     className="btn btn-warning"
-                                    onClick={() => setModalActive(true)}
+                                    onClick={() => dispatch(getModals(true))}
                                 >
                                     {(ticket.price * rate).toFixed(2) +
                                         rateName}
@@ -90,16 +93,8 @@ function TicketsHandler({ tickets, rate, rateName }: Tickets): JSX.Element {
                     </div>
                 </div>
             ))}
-            <BuyForm
-                active={modalActive}
-                setActive={setModalActive}
-                setSuccess={setSuccessActive}
-            />
-            <SuccessForm
-                success={successActive}
-                setSuccess={setSuccessActive}
-                setActive={setModalActive}
-            />
+            <BuyForm active={modals.buyFormActive} />
+            <SuccessForm success={modals.successFormActive} />
         </>
     )
 }
