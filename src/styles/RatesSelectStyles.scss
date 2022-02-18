@@ -4,26 +4,56 @@
     position: fixed;
     width: 100%;
     z-index: 100;
+    .btn {
+        background-color: #2ea44f;
+        border: 1px solid rgba(27, 31, 35, .15);
+        border-radius: 6px;
+        color: #fff;
+        cursor: pointer;
+     }
+    .active {
+        background-color: orange;
+    }
+}
 }
 
-.card {
-    top: 36vh;
-    width: 100%;
-    margin: auto;
-  }
-}
-
-@media (min-width: 769px) {
+@media (min-width: 769px) and (max-width: 1024px){
     .buttonsRates {
         background-color: black;
         position: fixed;
         width: 100%;
         z-index: 100;
+        .btn {
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            color: #fff;
+            cursor: pointer;
+        }      
+        .active {
+            background-color: orange;
+        }
     }
-    
-    .card {
-        top: 6vh;
-        width: 50%;
-        margin: auto;
-      }
+  }
+
+@media (min-width: 1025px) {
+    .buttonsRates {
+        background-color: black;
+        position: fixed;
+        width: 100%;
+        z-index: 100;
+        .btn {
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            color: #fff;
+            cursor: pointer;
+          }
+        .btn:hover {
+            background-color: #2c974b;
+          }
+        .active {
+            background-color: orange;
+        }
+    }
 }

@@ -5,8 +5,7 @@ import {
 } from '../../types/modals'
 
 const initialState: IModalsState = {
-    buyFormActive: false,
-    successFormActive: false,
+    modals: [],
 }
 
 export const modalsReducer = (
@@ -15,19 +14,9 @@ export const modalsReducer = (
     action: TModalsAction
 ): IModalsState => {
     switch (action.type) {
-        case ModalsActionTypes.BUY_FORM_STATE_CHANGE:
+        case ModalsActionTypes.MODALS_STATE_CHANGE:
             return {
-                buyFormActive: !state.successFormActive
-                    ? false
-                    : !action.payload,
-                successFormActive: state.buyFormActive ? true : !action.payload,
-            }
-        case ModalsActionTypes.SUCCESS_FORM_STATE_CHANGE:
-            return {
-                successFormActive: state.successFormActive
-                    ? !action.payload
-                    : false,
-                buyFormActive: state.successFormActive ? !action.payload : true,
+                modals: action.payload,
             }
         default:
             return state

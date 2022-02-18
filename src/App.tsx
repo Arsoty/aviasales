@@ -5,7 +5,6 @@ import { store } from './store'
 import { TicketFilter } from './components/TicketFilter'
 import TicketList from './components/TicketList'
 import RatesSelect from './components/RatesSelect'
-import Alert from './components/Alert'
 
 function App(): JSX.Element {
     return (

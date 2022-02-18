@@ -5,6 +5,8 @@ import { fetchTickets } from '../store/actionCreators/tickets'
 import TicketsHandler from './TicketsHandler'
 import { fetchRates } from '../store/actionCreators/rates'
 import Alert from './Alert'
+import BuyForm from './BuyForm'
+import SuccessForm from './SuccessForm'
 
 function TicketList(): JSX.Element {
     const { tickets, error, loading } = useTypedSelector(
@@ -32,11 +34,15 @@ function TicketList(): JSX.Element {
     }
 
     return tickets.length ? (
-        <TicketsHandler
-            rate={rates[rate.rate]}
-            rateName={rate.rate}
-            tickets={tickets}
-        />
+        <>
+            <TicketsHandler
+                rate={rates[rate.rate]}
+                rateName={rate.rate}
+                tickets={tickets}
+            />
+            <BuyForm />
+            <SuccessForm />
+        </>
     ) : (
         <Alert />
     )

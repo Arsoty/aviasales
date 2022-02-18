@@ -12,7 +12,19 @@
     align-items: center;
 }
 }
-@media (min-width: 769px) {
+
+@media (min-width: 769px) and (max-width: 1024px){
+    .mainContent {
+        background-color: black;
+        position: fixed;
+        width: 100%;
+        z-index:100;
+        top: 3vh;
+        color: white;
+    }
+  }
+
+@media (min-width: 1025px) {
     .mainContent {
         background-color: black;
         position: fixed;

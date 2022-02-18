@@ -4,17 +4,15 @@ import React from 'react'
 import '../styles/SuccessFormStyles.scss'
 import { useDispatch } from 'react-redux'
 import { getModals } from '../store/actionCreators/modals'
+import { useTypedSelector } from '../hooks/useTypeSelector'
 
-interface ISuccess {
-    success: boolean
-}
-
-function SuccessForm({ success }: ISuccess): JSX.Element {
+function SuccessForm(): JSX.Element {
+    const modals = useTypedSelector((state) => state.modals)
     const dispatch = useDispatch()
     return (
         <div
-            className={success ? 'modal active' : 'modal'}
-            onClick={() => dispatch(getModals(true))}
+            className={modals.modals[1] ? 'modal active' : 'modal'}
+            onClick={() => dispatch(getModals([false, false]))}
         >
             <div className="modalContent" onClick={(e) => e.stopPropagation()}>
                 <div className="alert alert-success" role="alert">

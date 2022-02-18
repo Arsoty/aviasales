@@ -6,12 +6,10 @@ import * as Yup from 'yup'
 import '../styles/BuyFormStyles.scss'
 import { useDispatch } from 'react-redux'
 import { getModals } from '../store/actionCreators/modals'
+import { useTypedSelector } from '../hooks/useTypeSelector'
 
-interface IBuyForm {
-    active: boolean
-}
-
-function BuyForm({ active }: IBuyForm): JSX.Element {
+function BuyForm(): JSX.Element {
+    const modals = useTypedSelector((state) => state.modals)
     const dispatch = useDispatch()
     const formik = useFormik({
         initialValues: {
@@ -45,8 +43,8 @@ function BuyForm({ active }: IBuyForm): JSX.Element {
 
     return (
         <div
-            className={active ? 'modal active' : 'modal'}
-            onClick={() => dispatch(getModals(false))}
+            className={modals.modals[0] ? 'modal active' : 'modal'}
+            onClick={() => dispatch(getModals([false, false]))}
         >
             <div className="modalContent" onClick={(e) => e.stopPropagation()}>
                 <form onSubmit={formik.handleSubmit}>
@@ -146,28 +144,14 @@ function BuyForm({ active }: IBuyForm): JSX.Element {
                         <p className="error">{formik.errors.passportNumber}</p>
                     ) : null}
                     <div className="form-check">
-                        {!formik.errors.email &&
-                        !formik.errors.passportNumber &&
-                        !formik.errors.phoneNumber &&
-                        !formik.errors.secondName &&
-                        !formik.errors.firstName &&
-                        formik.values.email &&
-                        formik.values.firstName &&
-                        formik.values.passportNumber &&
-                        formik.values.phoneNumber &&
-                        formik.values.secondName ? (
-                            <button
-                                onClick={() => dispatch(getModals(false))}
-                                type="submit"
-                                className="btn btn-primary"
-                            >
-                                Отправить
-                            </button>
-                        ) : (
-                            <button type="submit" className="btn btn-primary">
-                                Отправить
-                            </button>
-                        )}
+                        <button
+                            onClick={() => dispatch(getModals([false, true]))}
+                            type="submit"
+                            className="btn btn-primary"
+                            disabled={!(formik.dirty && formik.isValid)}
+                        >
+                            Отправить
+                        </button>
                     </div>
                 </form>
             </div>

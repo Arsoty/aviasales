@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
     background-color: rgb(239, 223, 250);
+    transition: 0.3s;
     .cardBody {
       display: flex;
       flex-direction: column;
@@ -28,14 +29,52 @@
       min-width: 150px;
     }
   }
+  .card:hover {
+    background-color: rgb(211, 145, 255);
+  }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 769px) and (max-width: 1024px){
+  .card {
+    top: 6vh;
+    width: 100%;
+    margin: auto;
+    background-color: rgb(239, 223, 250);
+    transition: 0.3s;
+    .cardBody {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin: auto;
+    }
+    .cardInfo {
+      display: flex;
+      flex-direction: row;
+    }
+    .cardText {
+      font-weight: 700;
+      font-size: 18px;
+    }
+    img {
+      max-width: 200px;
+      max-height: 150px;
+    }
+    button {
+      min-width: 150px;
+    }
+  }
+  .card:hover {
+    background-color: rgb(211, 145, 255);
+  }
+}
+
+@media (min-width: 1025px) {
 .card {
   top: 6vh;
   width: 100%;
   margin: auto;
   background-color: rgb(239, 223, 250);
+  transition: 0.3s;
   .cardBody {
     display: flex;
     flex-direction: row;
@@ -57,4 +96,8 @@
   button {
     min-width: 150px;
   }
-}}
+}
+.card:hover {
+  background-color: rgb(211, 145, 255);
+}
+}

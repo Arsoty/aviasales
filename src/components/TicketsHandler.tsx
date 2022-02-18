@@ -1,10 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import BuyForm from './BuyForm'
 import { ITickets } from '../types/ticket'
 import '../styles/TicketHandlerStyles.scss'
-import SuccessForm from './SuccessForm'
-import { useTypedSelector } from '../hooks/useTypeSelector'
 import { getModals } from '../store/actionCreators/modals'
 
 const TK1 = 'https://logos-world.net/wp-content/'
@@ -14,6 +11,8 @@ const SU1 = 'https://papik.pro/uploads/posts/2021-11/thumbs'
 const SU2 = '/1636117382_50-papik-pro-p-aeroflot-logotip-foto-56.png'
 const BA1 = 'https://logos-world.net/wp-content/'
 const BA2 = 'uploads/2021/02/British-Airways-Logo.png'
+const CARRIER_NOT_FOUND =
+    'https://cdn-icons-png.flaticon.com/512/2748/2748558.png'
 
 interface ITicketsHandler {
     tickets: ITickets
@@ -21,42 +20,34 @@ interface ITicketsHandler {
     rateName: string
 }
 
+function carrierImage(carrier: string): JSX.Element {
+    if (carrier === 'TK') {
+        return <img className="card-img" src={TK1 + TK2} alt="alt" />
+    }
+    if (carrier === 'S7') {
+        return <img className="card-img" src={S7} alt="alt" />
+    }
+    if (carrier === 'SU') {
+        return <img className="card-img" src={SU1 + SU2} alt="alt" />
+    }
+    if (carrier === 'BA') {
+        return <img className="card-img" src={BA1 + BA2} alt="alt" />
+    }
+    return <img className="card-img" src={CARRIER_NOT_FOUND} alt="alt" />
+}
+
 function TicketsHandler({
     tickets,
     rate,
     rateName,
 }: ITicketsHandler): JSX.Element {
-    const modals = useTypedSelector((state) => state.modals)
     const dispatch = useDispatch()
     return (
         <>
             {tickets.map((ticket) => (
                 <div className="card mb-3">
                     <div className="cardBody">
-                        {(ticket.carrier === 'TK' && (
-                            <img
-                                className="card-img"
-                                src={TK1 + TK2}
-                                alt="alt"
-                            />
-                        )) ||
-                            (ticket.carrier === 'S7' && (
-                                <img className="card-img" src={S7} alt="alt" />
-                            )) ||
-                            (ticket.carrier === 'SU' && (
-                                <img
-                                    className="card-img"
-                                    src={SU1 + SU2}
-                                    alt="alt"
-                                />
-                            )) ||
-                            (ticket.carrier === 'BA' && (
-                                <img
-                                    className="card-img"
-                                    src={BA1 + BA2}
-                                    alt="alt"
-                                />
-                            ))}
+                        {carrierImage(ticket.carrier)}
                         <div className="card-body">
                             <h5 className="card-title">{ticket.carrier}</h5>
                             <div className="cardInfo">
@@ -83,7 +74,9 @@ function TicketsHandler({
                                 <button
                                     type="submit"
                                     className="btn btn-warning"
-                                    onClick={() => dispatch(getModals(true))}
+                                    onClick={() =>
+                                        dispatch(getModals([true, false]))
+                                    }
                                 >
                                     {(ticket.price * rate).toFixed(2) +
                                         rateName}
@@ -93,8 +86,6 @@ function TicketsHandler({
                     </div>
                 </div>
             ))}
-            <BuyForm active={modals.buyFormActive} />
-            <SuccessForm success={modals.successFormActive} />
         </>
     )
 }

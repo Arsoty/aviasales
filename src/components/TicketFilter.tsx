@@ -17,7 +17,14 @@ export function TicketFilter(): JSX.Element {
                     className="btn btn-danger"
                     value={-1}
                     onChange={(e) => dispatch(getStops(+e.target.value))}
-                    checked={stops.includes(-1)}
+                    checked={
+                        stops.includes(-1) ||
+                        (stops.includes(-1) &&
+                            stops.includes(0) &&
+                            stops.includes(1) &&
+                            stops.includes(2) &&
+                            stops.includes(3))
+                    }
                 />
                 Все варианты
                 <input
