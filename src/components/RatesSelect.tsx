@@ -16,36 +16,36 @@ function RatesSelect(): JSX.Element {
                     <button
                         onClick={() => {
                             dispatch(getRates('UAH'))
-                            setActiveUAH(' active')
+                            setActiveUAH('active')
                             setActiveRUB('')
                             setActiveUSD('')
                         }}
                         type="submit"
-                        className={`btn${activeUAH}`}
+                        className={`btn ${activeUAH}`.trim()}
                     >
                         UAH
                     </button>
                     <button
                         onClick={() => {
                             dispatch(getRates('RUB'))
-                            setActiveRUB(' active')
+                            setActiveRUB('active')
                             setActiveUAH('')
                             setActiveUSD('')
                         }}
                         type="submit"
-                        className={`btn${activeRUB}`}
+                        className={`btn ${activeRUB}`.trim()}
                     >
                         RUB
                     </button>
                     <button
                         onClick={() => {
                             dispatch(getRates('USD'))
-                            setActiveUSD(' active')
+                            setActiveUSD('active')
                             setActiveRUB('')
                             setActiveUAH('')
                         }}
                         type="submit"
-                        className={`btn${activeUSD}`}
+                        className={`btn ${activeUSD}`.trim()}
                     >
                         USD
                     </button>
