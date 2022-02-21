@@ -1,103 +1,163 @@
-@media (max-width: 768px) {
-.card {
-    top: 35vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(239, 223, 250);
-    transition: 0.3s;
-    .cardBody {
-      display: flex;
-      flex-direction: column;
-      margin:auto;
+@media (max-width: 412px) {
+    .card {
+        top: 35vh;
+        width: 75%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(239, 223, 250);
+        transition: 0.3s;
+
+        .cardBody {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        .cardInfo {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .cardText {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+            margin: auto;
+        }
+
+        button {
+            min-width: 150px;
+        }
+
+        &:hover {
+            background-color: rgb(211, 145, 255);
+        }
     }
-    .cardInfo {
-      display: flex;
-      flex-direction: row;
-    }
-    .cardText {
-      font-weight: 700;
-      font-size: 18px;
-    }
-    img {
-      max-width: 100px;
-      max-height: 100px;
-      margin: auto;
-    }
-    button {
-      min-width: 150px;
-    }
-    &:hover {
-      background-color: rgb(211, 145, 255);
-    }
-  }
 }
 
-@media (min-width: 769px) and (max-width: 1024px){
-  .card {
-    top: 6vh;
-    width: 100%;
-    margin: auto;
-    background-color: rgb(239, 223, 250);
-    transition: 0.3s;
-    .cardBody {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      margin: auto;
+@media (min-width: 413px) and (max-width: 768px) {
+    .card {
+        top: 35vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(239, 223, 250);
+        transition: 0.3s;
+
+        .cardBody {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        .cardInfo {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .cardText {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+            margin: auto;
+        }
+
+        button {
+            min-width: 150px;
+        }
+
+        &:hover {
+            background-color: rgb(211, 145, 255);
+        }
     }
-    .cardInfo {
-      display: flex;
-      flex-direction: row;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .card {
+        top: 6vh;
+        width: 100%;
+        margin: auto;
+        background-color: rgb(239, 223, 250);
+        transition: 0.3s;
+
+        .cardBody {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin: auto;
+        }
+
+        .cardInfo {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .cardText {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        img {
+            max-width: 200px;
+            max-height: 150px;
+        }
+
+        button {
+            min-width: 150px;
+        }
+
+        &:hover {
+            background-color: rgb(211, 145, 255);
+        }
     }
-    .cardText {
-      font-weight: 700;
-      font-size: 18px;
-    }
-    img {
-      max-width: 200px;
-      max-height: 150px;
-    }
-    button {
-      min-width: 150px;
-    }
-    &:hover {
-      background-color: rgb(211, 145, 255);
-    }
-  }
 }
 
 @media (min-width: 1025px) {
-.card {
-  top: 9vh;
-  width: 50%;
-  margin: auto;
-  background-color: rgb(239, 223, 250);
-  transition: 0.3s;
-  .cardBody {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: auto;
-  }
-  .cardInfo {
-    display: flex;
-    flex-direction: row;
-  }
-  .cardText {
-    font-weight: 700;
-    font-size: 18px;
-  }
-  img {
-    max-width: 200px;
-    max-height: 150px;
-  }
-  button {
-    min-width: 150px;
-  }
-  &:hover {
-    background-color: rgb(211, 145, 255);
-  }
-}
+    .card {
+        top: 9vh;
+        width: 50%;
+        margin: auto;
+        background-color: rgb(239, 223, 250);
+        transition: 0.3s;
+
+        .cardBody {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin: auto;
+        }
+
+        .cardInfo {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .cardText {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        img {
+            max-width: 200px;
+            max-height: 150px;
+        }
+
+        button {
+            min-width: 150px;
+        }
+
+        &:hover {
+            background-color: rgb(211, 145, 255);
+        }
+    }
 }

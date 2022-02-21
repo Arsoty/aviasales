@@ -1,89 +1,90 @@
 @media (max-width: 768px) {
-  form {
-    margin: auto;
-    width: 300px;
-    border: 1px solid black;
-    .error {
-        color: red;
-      }
-  }
+    form {
+        margin: auto;
+        width: 300px;
+        border: 1px solid black;
 
-.modal {
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0,0,0,0.4);
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.5s;
-    &.active {
-      opacity: 1;
-      pointer-events: all;
+        .error {
+            color: red;
+        }
     }
-  }
-  
-  
-  .modalContent {
-    padding: 12px;
-    border-radius: 12px;
-    background-color: white;
-  }
-}
 
+    .modal {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.5s;
 
-@media (min-width: 769px) and (max-width: 1024px){
-  .buttonsRates {
-      background-color: black;
-      position: fixed;
-      width: 100%;
-      z-index: 100;
-  }
-  
-  .card {
-      top: 8vh;
-      width: 100%;
-      margin: auto;
+        &.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
+
+    .modalContent {
+        padding: 12px;
+        border-radius: 12px;
+        background-color: white;
     }
 }
-  
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .buttonsRates {
+        background-color: black;
+        position: fixed;
+        width: 100%;
+        z-index: 100;
+    }
+
+    .card {
+        top: 8vh;
+        width: 100%;
+        margin: auto;
+    }
+}
+
 @media (min-width: 1025px) {
-form {
-    margin: auto;
-    width: 400px;
-    border: 1px solid black;
-    .error {
-        color: red;
-      }
-  }
+    form {
+        margin: auto;
+        width: 400px;
+        border: 1px solid black;
 
-.modal {
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0,0,0,0.4);
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.5s;
-    .active {
-      opacity: 1;
-      pointer-events: all;
+        .error {
+            color: red;
+        }
     }
-  }
-  
-  
-  .modalContent {
-    padding: 12px;
-    border-radius: 12px;
-    background-color: white;
-  }
+
+    .modal {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.5s;
+
+        .active {
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
+
+    .modalContent {
+        padding: 12px;
+        border-radius: 12px;
+        background-color: white;
+    }
 }

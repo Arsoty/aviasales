@@ -45,7 +45,7 @@ function TicketsHandler({
     return (
         <>
             {tickets.map((ticket) => (
-                <div className="card mb-3">
+                <div key={Math.random()} className="card mb-3">
                     <div className="cardBody">
                         {carrierImage(ticket.carrier)}
                         <div className="card-body">

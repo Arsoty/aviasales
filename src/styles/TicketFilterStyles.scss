@@ -1,35 +1,48 @@
-
-@media (max-width: 768px) {
-.mainContent {
-    background-color: black;
-    position: fixed;
-    width: 100%;
-    z-index:100;
-    top: 6vh;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+@media (max-width: 412px) {
+    .mainContent {
+        background-color: black;
+        position: fixed;
+        width: 75%;
+        z-index: 100;
+        top: 6vh;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
-}
 
-@media (min-width: 769px) and (max-width: 1024px){
+@media (min-width: 413px) and (max-width: 768px) {
     .mainContent {
         background-color: black;
         position: fixed;
         width: 100%;
-        z-index:100;
+        z-index: 100;
+        top: 6vh;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .mainContent {
+        background-color: black;
+        position: fixed;
+        width: 100%;
+        z-index: 100;
         top: 5vh;
         color: white;
     }
-  }
+}
 
 @media (min-width: 1025px) {
     .mainContent {
         background-color: black;
         position: fixed;
         width: 100%;
-        z-index:100;
+        z-index: 100;
         top: 5vh;
         color: white;
     }
