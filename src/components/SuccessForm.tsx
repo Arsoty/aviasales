@@ -2,17 +2,14 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
 import '../styles/SuccessFormStyles.scss'
-import { useDispatch } from 'react-redux'
-import { getModals } from '../store/actionCreators/modals'
-import { useTypedSelector } from '../hooks/useTypeSelector'
+import { observer } from 'mobx-react-lite'
+import modals from '../store/modals'
 
-function SuccessForm(): JSX.Element {
-    const modals = useTypedSelector((state) => state.modals)
-    const dispatch = useDispatch()
-    return (
+const SuccessForm = observer(
+    (): JSX.Element => (
         <div
             className={modals.modals[1] ? 'modal active' : 'modal'}
-            onClick={() => dispatch(getModals([false, false]))}
+            onClick={() => modals.changeModals([false, false])}
         >
             <div className="modalContent" onClick={(e) => e.stopPropagation()}>
                 <div className="alert alert-success" role="alert">
@@ -26,6 +23,6 @@ function SuccessForm(): JSX.Element {
             </div>
         </div>
     )
-}
+)
 
 export default SuccessForm

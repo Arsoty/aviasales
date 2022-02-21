@@ -4,13 +4,10 @@ import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import '../styles/BuyFormStyles.scss'
-import { useDispatch } from 'react-redux'
-import { getModals } from '../store/actionCreators/modals'
-import { useTypedSelector } from '../hooks/useTypeSelector'
+import { observer } from 'mobx-react-lite'
+import modals from '../store/modals'
 
-function BuyForm(): JSX.Element {
-    const modals = useTypedSelector((state) => state.modals)
-    const dispatch = useDispatch()
+const BuyForm = observer((): JSX.Element => {
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -44,7 +41,7 @@ function BuyForm(): JSX.Element {
     return (
         <div
             className={modals.modals[0] ? 'modal active' : 'modal'}
-            onClick={() => dispatch(getModals([false, false]))}
+            onClick={() => modals.changeModals([false, false])}
         >
             <div className="modalContent" onClick={(e) => e.stopPropagation()}>
                 <form onSubmit={formik.handleSubmit}>
@@ -145,7 +142,7 @@ function BuyForm(): JSX.Element {
                     ) : null}
                     <div className="form-check">
                         <button
-                            onClick={() => dispatch(getModals([false, true]))}
+                            onClick={() => modals.changeModals([false, true])}
                             type="submit"
                             className="btn btn-primary"
                             disabled={!(formik.dirty && formik.isValid)}
@@ -157,6 +154,6 @@ function BuyForm(): JSX.Element {
             </div>
         </div>
     )
-}
+})
 
 export default BuyForm

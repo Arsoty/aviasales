@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
 import '../styles/RatesSelectStyles.scss'
-import { getRates } from '../store/actionCreators/rates'
+import ratesChange from '../store/ratesChange'
 
 function RatesSelect(): JSX.Element {
-    const dispatch = useDispatch()
     const [activeUAH, setActiveUAH] = useState(' active')
     const [activeRUB, setActiveRUB] = useState('')
     const [activeUSD, setActiveUSD] = useState('')
@@ -15,7 +13,7 @@ function RatesSelect(): JSX.Element {
                 <div className="buttonsRates">
                     <button
                         onClick={() => {
-                            dispatch(getRates('UAH'))
+                            ratesChange.getRate('UAH')
                             setActiveUAH('active')
                             setActiveRUB('')
                             setActiveUSD('')
@@ -27,7 +25,7 @@ function RatesSelect(): JSX.Element {
                     </button>
                     <button
                         onClick={() => {
-                            dispatch(getRates('RUB'))
+                            ratesChange.getRate('RUB')
                             setActiveRUB('active')
                             setActiveUAH('')
                             setActiveUSD('')
@@ -39,7 +37,7 @@ function RatesSelect(): JSX.Element {
                     </button>
                     <button
                         onClick={() => {
-                            dispatch(getRates('USD'))
+                            ratesChange.getRate('USD')
                             setActiveUSD('active')
                             setActiveRUB('')
                             setActiveUAH('')

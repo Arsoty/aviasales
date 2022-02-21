@@ -1,8 +1,7 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import { ITickets } from '../types/ticket'
 import '../styles/TicketHandlerStyles.scss'
-import { getModals } from '../store/actionCreators/modals'
+import modals from '../store/modals'
 
 const TK1 = 'https://logos-world.net/wp-content/'
 const TK2 = 'uploads/2020/03/Turkish-Airlines-Logo.png'
@@ -41,7 +40,6 @@ function TicketsHandler({
     rate,
     rateName,
 }: ITicketsHandler): JSX.Element {
-    const dispatch = useDispatch()
     return (
         <>
             {tickets.map((ticket) => (
@@ -75,7 +73,7 @@ function TicketsHandler({
                                     type="submit"
                                     className="btn btn-warning"
                                     onClick={() =>
-                                        dispatch(getModals([true, false]))
+                                        modals.changeModals([true, false])
                                     }
                                 >
                                     {(ticket.price * rate).toFixed(2) +

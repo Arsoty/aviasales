@@ -1,44 +1,33 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { useTypedSelector } from '../hooks/useTypeSelector'
-import { fetchTickets } from '../store/actionCreators/tickets'
+import { observer } from 'mobx-react-lite'
 import TicketsHandler from './TicketsHandler'
-import { fetchRates } from '../store/actionCreators/rates'
 import Alert from './Alert'
 import BuyForm from './BuyForm'
 import SuccessForm from './SuccessForm'
+import ticket from '../store/ticket'
+import rates from '../store/rates'
+import stops from '../store/stops'
+import ratesChange from '../store/ratesChange'
 
-function TicketList(): JSX.Element {
-    const { tickets, error, loading } = useTypedSelector(
-        (state) => state.ticket
-    )
-
-    const { rates } = useTypedSelector((state) => state.rate)
-
-    const stops = useTypedSelector((state) => state.stops)
-
-    const rate = useTypedSelector((state) => state.ratechange)
-
-    const dispatch = useDispatch()
-
+const TicketList = observer((): JSX.Element => {
     useEffect(() => {
-        dispatch(fetchTickets(stops))
-        dispatch(fetchRates())
-    }, [dispatch, stops])
+        ticket.getTickets(stops.stops)
+        rates.getRates()
+    }, [stops.stops])
 
-    if (loading) {
+    if (ticket.loading) {
         return <div>Загрузка билетов!</div>
     }
-    if (error) {
-        return <div>{error}</div>
+    if (ticket.error) {
+        return <div>{ticket.error}</div>
     }
 
-    return tickets.length ? (
+    return ticket.tickets.length ? (
         <>
             <TicketsHandler
-                rate={rates[rate.rate]}
-                rateName={rate.rate}
-                tickets={tickets}
+                rate={rates.rates[ratesChange.rate]}
+                rateName={ratesChange.rate}
+                tickets={ticket.tickets}
             />
             <BuyForm />
             <SuccessForm />
@@ -46,6 +35,6 @@ function TicketList(): JSX.Element {
     ) : (
         <Alert />
     )
-}
+})
 
 export default TicketList
