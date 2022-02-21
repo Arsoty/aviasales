@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx'
 import { IModalsState } from '../types/modals'
 
 const initialState: IModalsState = {
-    modals: [],
+    modals: [false, false],
 }
 
 class Modals {

@@ -5,7 +5,6 @@ import StopsStore from '../store/stops'
 
 export const TicketFilter = observer((): JSX.Element => {
     const { stops } = StopsStore
-    console.log(stops)
     return (
         <div className="main">
             <div className="mainContent">
@@ -14,14 +13,7 @@ export const TicketFilter = observer((): JSX.Element => {
                     className="btn btn-danger"
                     value={-1}
                     onChange={(e) => StopsStore.getStops(+e.target.value)}
-                    checked={
-                        stops.includes(-1) ||
-                        (stops.includes(-1) &&
-                            stops.includes(0) &&
-                            stops.includes(1) &&
-                            stops.includes(2) &&
-                            stops.includes(3))
-                    }
+                    checked={stops.length === 5}
                 />
                 Все варианты
                 <input
@@ -29,10 +21,7 @@ export const TicketFilter = observer((): JSX.Element => {
                     className="btn btn-info"
                     value={0}
                     onChange={(e) => StopsStore.getStops(+e.target.value)}
-                    checked={
-                        (stops.includes(0) && stops.includes(-1)) ||
-                        stops.includes(0)
-                    }
+                    checked={stops.includes(0)}
                 />
                 Без пересадок
                 <input
@@ -40,10 +29,7 @@ export const TicketFilter = observer((): JSX.Element => {
                     className="btn btn-info"
                     value={1}
                     onChange={(e) => StopsStore.getStops(+e.target.value)}
-                    checked={
-                        (stops.includes(1) && stops.includes(-1)) ||
-                        stops.includes(1)
-                    }
+                    checked={stops.includes(1)}
                 />
                 1 пересадка
                 <input
@@ -51,10 +37,7 @@ export const TicketFilter = observer((): JSX.Element => {
                     className="btn btn-info"
                     value={2}
                     onChange={(e) => StopsStore.getStops(+e.target.value)}
-                    checked={
-                        (stops.includes(2) && stops.includes(-1)) ||
-                        stops.includes(2)
-                    }
+                    checked={stops.includes(2)}
                 />
                 2 пересадки
                 <input
@@ -62,10 +45,7 @@ export const TicketFilter = observer((): JSX.Element => {
                     className="btn btn-info"
                     value={3}
                     onChange={(e) => StopsStore.getStops(+e.target.value)}
-                    checked={
-                        (stops.includes(3) && stops.includes(-1)) ||
-                        stops.includes(3)
-                    }
+                    checked={stops.includes(3)}
                 />
                 3 пересадки
             </div>

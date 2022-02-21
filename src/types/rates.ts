@@ -1,7 +1,6 @@
 export interface RatesState {
     rates: IRates
-    loading: boolean
-    error: null | string
+    rate: string
 }
 
 export type IRates = {

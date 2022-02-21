@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx'
+import { makeAutoObservable, runInAction } from 'mobx'
 import { ITicket, ITickets, TicketState } from '../types/ticket'
 
 const url1 = 'https://raw.githubusercontent.com/'
@@ -21,21 +21,23 @@ class Ticket {
         makeAutoObservable(this)
     }
 
-    getTickets(): void {
+    async getTickets(): Promise<void> {
         this.loading = true
         fetch(url1 + url2)
             .then((response) => response.json())
             .then((data) => {
-                this.tickets = [
-                    ...data.tickets.sort(
-                        (a: ITicket, b: ITicket) => a.price - b.price
-                    ),
-                ]
+                runInAction(() => {
+                    this.tickets = [
+                        ...data.tickets.sort(
+                            (a: ITicket, b: ITicket) => a.price - b.price
+                        ),
+                    ]
+                    this.loading = false
+                })
             })
             .catch(() => {
                 this.error = `Ошибка при загрузке!`
             })
-        this.loading = false
     }
 }
 

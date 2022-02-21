@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../styles/RatesSelectStyles.scss'
 import { observer } from 'mobx-react-lite'
-import RatesChangeStore from '../store/ratesChange'
+import RatesStore from '../store/rates'
 
 const RatesSelect = observer((): JSX.Element => {
     const [activeUAH, setActiveUAH] = useState(' active')
@@ -14,7 +14,7 @@ const RatesSelect = observer((): JSX.Element => {
                 <div className="buttonsRates">
                     <button
                         onClick={() => {
-                            RatesChangeStore.getRate('UAH')
+                            RatesStore.getRate('UAH')
                             setActiveUAH('active')
                             setActiveRUB('')
                             setActiveUSD('')
@@ -26,7 +26,7 @@ const RatesSelect = observer((): JSX.Element => {
                     </button>
                     <button
                         onClick={() => {
-                            RatesChangeStore.getRate('RUB')
+                            RatesStore.getRate('RUB')
                             setActiveRUB('active')
                             setActiveUAH('')
                             setActiveUSD('')
@@ -38,7 +38,7 @@ const RatesSelect = observer((): JSX.Element => {
                     </button>
                     <button
                         onClick={() => {
-                            RatesChangeStore.getRate('USD')
+                            RatesStore.getRate('USD')
                             setActiveUSD('active')
                             setActiveRUB('')
                             setActiveUAH('')

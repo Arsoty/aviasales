@@ -7,38 +7,35 @@ import SuccessForm from './SuccessForm'
 import TicketStore from '../store/ticket'
 import RatesStore from '../store/rates'
 import StopsStore from '../store/stops'
-import RatesChangeStore from '../store/ratesChange'
 import { ITicket } from '../types/ticket'
+import '../styles/TicketListStyles.scss'
 
 const TicketList = observer((): JSX.Element => {
     const { stops } = StopsStore
-    const { rate } = RatesChangeStore
-    const { rates } = RatesStore
-    const { tickets } = TicketStore
+    const { rates, rate } = RatesStore
+    const { tickets, error, loading } = TicketStore
 
     useEffect(() => {
         TicketStore.getTickets()
         RatesStore.getRates()
     }, [])
 
-    const memoizedRates = useMemo(() => rates, [rates])
-
     const memoizedTickets = useMemo(
         () => tickets.filter((ticket: ITicket) => stops.includes(ticket.stops)),
         [tickets, stops]
     )
 
-    if (TicketStore.loading) {
-        return <div>Загрузка билетов!</div>
+    if (loading) {
+        return <div className="loading">Загрузка билетов!</div>
     }
-    if (TicketStore.error) {
-        return <div>{TicketStore.error}</div>
+    if (error) {
+        return <div className="loading">{error}</div>
     }
 
     return memoizedTickets.length ? (
         <>
             <TicketsHandler
-                rate={memoizedRates[rate]}
+                rate={rates[rate]}
                 rateName={rate}
                 tickets={memoizedTickets}
             />
