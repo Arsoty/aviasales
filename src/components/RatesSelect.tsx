@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import '../styles/RatesSelectStyles.scss'
+import { observer } from 'mobx-react-lite'
 import ratesChange from '../store/ratesChange'
 
-function RatesSelect(): JSX.Element {
+const RatesSelect = observer((): JSX.Element => {
     const [activeUAH, setActiveUAH] = useState(' active')
     const [activeRUB, setActiveRUB] = useState('')
     const [activeUSD, setActiveUSD] = useState('')
@@ -51,6 +52,6 @@ function RatesSelect(): JSX.Element {
             </div>
         </div>
     )
-}
+})
 
 export default RatesSelect
