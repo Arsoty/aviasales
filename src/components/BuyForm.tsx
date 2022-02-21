@@ -5,9 +5,11 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import '../styles/BuyFormStyles.scss'
 import { observer } from 'mobx-react-lite'
-import modals from '../store/modals'
+import ModalsStore from '../store/modals'
 
 const BuyForm = observer((): JSX.Element => {
+    const { modals } = ModalsStore
+
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -40,8 +42,8 @@ const BuyForm = observer((): JSX.Element => {
 
     return (
         <div
-            className={modals.modals[0] ? 'modal active' : 'modal'}
-            onClick={() => modals.changeModals([false, false])}
+            className={modals[0] ? 'modal active' : 'modal'}
+            onClick={() => ModalsStore.changeModals([false, false])}
         >
             <div className="modalContent" onClick={(e) => e.stopPropagation()}>
                 <form onSubmit={formik.handleSubmit}>
@@ -142,7 +144,9 @@ const BuyForm = observer((): JSX.Element => {
                     ) : null}
                     <div className="form-check">
                         <button
-                            onClick={() => modals.changeModals([false, true])}
+                            onClick={() =>
+                                ModalsStore.changeModals([false, true])
+                            }
                             type="submit"
                             className="btn btn-primary"
                             disabled={!(formik.dirty && formik.isValid)}

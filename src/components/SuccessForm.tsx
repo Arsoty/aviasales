@@ -3,13 +3,14 @@
 import React from 'react'
 import '../styles/SuccessFormStyles.scss'
 import { observer } from 'mobx-react-lite'
-import modals from '../store/modals'
+import ModalsStore from '../store/modals'
 
-const SuccessForm = observer(
-    (): JSX.Element => (
+const SuccessForm = observer((): JSX.Element => {
+    const { modals } = ModalsStore
+    return (
         <div
-            className={modals.modals[1] ? 'modal active' : 'modal'}
-            onClick={() => modals.changeModals([false, false])}
+            className={modals[1] ? 'modal active' : 'modal'}
+            onClick={() => ModalsStore.changeModals([false, false])}
         >
             <div className="modalContent" onClick={(e) => e.stopPropagation()}>
                 <div className="alert alert-success" role="alert">
@@ -23,6 +24,6 @@ const SuccessForm = observer(
             </div>
         </div>
     )
-)
+})
 
 export default SuccessForm

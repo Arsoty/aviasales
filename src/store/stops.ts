@@ -17,11 +17,17 @@ class Stops {
     }
 
     getStops(stop: number): void {
-        this.stops = this.stops.includes(stop)
-            ? this.stops.filter(
-                  (thisStop) => thisStop !== stop && thisStop !== -1
-              )
-            : [...this.stops, stop]
+        if (stop === -1 && this.stops.length !== 5) {
+            this.stops = initialState.stops
+        } else if (stop === -1 && this.stops.length === 5) {
+            this.stops = []
+        } else {
+            this.stops = this.stops.includes(stop)
+                ? this.stops.filter(
+                      (thisStop) => thisStop !== stop && thisStop !== -1
+                  )
+                : [...this.stops, stop]
+        }
     }
 }
 

@@ -1,33 +1,46 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { observer } from 'mobx-react-lite'
 import TicketsHandler from './TicketsHandler'
 import Alert from './Alert'
 import BuyForm from './BuyForm'
 import SuccessForm from './SuccessForm'
-import ticket from '../store/ticket'
-import rates from '../store/rates'
-import stops from '../store/stops'
-import ratesChange from '../store/ratesChange'
+import TicketStore from '../store/ticket'
+import RatesStore from '../store/rates'
+import StopsStore from '../store/stops'
+import RatesChangeStore from '../store/ratesChange'
+import { ITicket } from '../types/ticket'
 
 const TicketList = observer((): JSX.Element => {
-    useEffect(() => {
-        ticket.getTickets(stops.stops)
-        rates.getRates()
-    }, [stops.stops])
+    const { stops } = StopsStore
+    const { rate } = RatesChangeStore
+    const { rates } = RatesStore
+    const { tickets } = TicketStore
 
-    if (ticket.loading) {
+    useEffect(() => {
+        TicketStore.getTickets()
+        RatesStore.getRates()
+    }, [])
+
+    const memoizedRates = useMemo(() => rates, [rates])
+
+    const memoizedTickets = useMemo(
+        () => tickets.filter((ticket: ITicket) => stops.includes(ticket.stops)),
+        [tickets, stops]
+    )
+
+    if (TicketStore.loading) {
         return <div>Загрузка билетов!</div>
     }
-    if (ticket.error) {
-        return <div>{ticket.error}</div>
+    if (TicketStore.error) {
+        return <div>{TicketStore.error}</div>
     }
 
-    return ticket.tickets.length ? (
+    return memoizedTickets.length ? (
         <>
             <TicketsHandler
-                rate={rates.rates[ratesChange.rate]}
-                rateName={ratesChange.rate}
-                tickets={ticket.tickets}
+                rate={memoizedRates[rate]}
+                rateName={rate}
+                tickets={memoizedTickets}
             />
             <BuyForm />
             <SuccessForm />

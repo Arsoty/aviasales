@@ -2,7 +2,6 @@ export interface TicketState {
     tickets: ITickets
     loading: boolean
     error: null | string
-    stops: Array<number>
 }
 
 export type ITickets = ITicket[]

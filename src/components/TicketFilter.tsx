@@ -1,24 +1,26 @@
 import React from 'react'
 import '../styles/TicketFilterStyles.scss'
 import { observer } from 'mobx-react-lite'
-import stops from '../store/stops'
+import StopsStore from '../store/stops'
 
-export const TicketFilter = observer(
-    (): JSX.Element => (
+export const TicketFilter = observer((): JSX.Element => {
+    const { stops } = StopsStore
+    console.log(stops)
+    return (
         <div className="main">
             <div className="mainContent">
                 <input
                     type="checkbox"
                     className="btn btn-danger"
                     value={-1}
-                    onChange={(e) => stops.getStops(+e.target.value)}
+                    onChange={(e) => StopsStore.getStops(+e.target.value)}
                     checked={
-                        stops.stops.includes(-1) ||
-                        (stops.stops.includes(-1) &&
-                            stops.stops.includes(0) &&
-                            stops.stops.includes(1) &&
-                            stops.stops.includes(2) &&
-                            stops.stops.includes(3))
+                        stops.includes(-1) ||
+                        (stops.includes(-1) &&
+                            stops.includes(0) &&
+                            stops.includes(1) &&
+                            stops.includes(2) &&
+                            stops.includes(3))
                     }
                 />
                 Все варианты
@@ -26,9 +28,10 @@ export const TicketFilter = observer(
                     type="checkbox"
                     className="btn btn-info"
                     value={0}
-                    onChange={(e) => stops.getStops(+e.target.value)}
+                    onChange={(e) => StopsStore.getStops(+e.target.value)}
                     checked={
-                        stops.stops.includes(0) || stops.stops.includes(-1)
+                        (stops.includes(0) && stops.includes(-1)) ||
+                        stops.includes(0)
                     }
                 />
                 Без пересадок
@@ -36,9 +39,10 @@ export const TicketFilter = observer(
                     type="checkbox"
                     className="btn btn-info"
                     value={1}
-                    onChange={(e) => stops.getStops(+e.target.value)}
+                    onChange={(e) => StopsStore.getStops(+e.target.value)}
                     checked={
-                        stops.stops.includes(1) || stops.stops.includes(-1)
+                        (stops.includes(1) && stops.includes(-1)) ||
+                        stops.includes(1)
                     }
                 />
                 1 пересадка
@@ -46,9 +50,10 @@ export const TicketFilter = observer(
                     type="checkbox"
                     className="btn btn-info"
                     value={2}
-                    onChange={(e) => stops.getStops(+e.target.value)}
+                    onChange={(e) => StopsStore.getStops(+e.target.value)}
                     checked={
-                        stops.stops.includes(2) || stops.stops.includes(-1)
+                        (stops.includes(2) && stops.includes(-1)) ||
+                        stops.includes(2)
                     }
                 />
                 2 пересадки
@@ -56,13 +61,14 @@ export const TicketFilter = observer(
                     type="checkbox"
                     className="btn btn-info"
                     value={3}
-                    onChange={(e) => stops.getStops(+e.target.value)}
+                    onChange={(e) => StopsStore.getStops(+e.target.value)}
                     checked={
-                        stops.stops.includes(3) || stops.stops.includes(-1)
+                        (stops.includes(3) && stops.includes(-1)) ||
+                        stops.includes(3)
                     }
                 />
                 3 пересадки
             </div>
         </div>
     )
-)
+})
