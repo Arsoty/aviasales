@@ -12,7 +12,7 @@ import '../styles/TicketListStyles.scss'
 
 const TicketList = observer((): JSX.Element => {
     const { stops } = StopsStore
-    const { rates, rate } = RatesStore
+    const { rate, rates } = RatesStore
     const { tickets, error, loading } = TicketStore
 
     useEffect(() => {

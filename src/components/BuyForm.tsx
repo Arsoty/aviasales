@@ -145,7 +145,7 @@ const BuyForm = observer((): JSX.Element => {
                     <div className="form-check">
                         <button
                             onClick={() =>
-                                ModalsStore.changeModals([false, true])
+                                ModalsStore.changeModals([true, true])
                             }
                             type="submit"
                             className="btn btn-primary"

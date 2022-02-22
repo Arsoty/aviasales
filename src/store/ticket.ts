@@ -23,7 +23,7 @@ class Ticket {
 
     async getTickets(): Promise<void> {
         this.loading = true
-        fetch(url1 + url2)
+        await fetch(url1 + url2)
             .then((response) => response.json())
             .then((data) => {
                 runInAction(() => {
@@ -32,12 +32,14 @@ class Ticket {
                             (a: ITicket, b: ITicket) => a.price - b.price
                         ),
                     ]
-                    this.loading = false
                 })
             })
             .catch(() => {
                 this.error = `Ошибка при загрузке!`
             })
+        runInAction(() => {
+            this.loading = false
+        })
     }
 }
 
