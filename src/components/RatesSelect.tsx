@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../styles/RatesSelectStyles.scss'
 import { observer } from 'mobx-react-lite'
 import RatesStore from '../store/rates'
 
 const RatesSelect = observer((): JSX.Element => {
-    const [activeUAH, setActiveUAH] = useState(' active')
-    const [activeRUB, setActiveRUB] = useState('')
-    const [activeUSD, setActiveUSD] = useState('')
+    const { rate } = RatesStore;
 
     return (
         <div className="rates">
@@ -15,36 +13,27 @@ const RatesSelect = observer((): JSX.Element => {
                     <button
                         onClick={() => {
                             RatesStore.getRate('UAH')
-                            setActiveUAH('active')
-                            setActiveRUB('')
-                            setActiveUSD('')
                         }}
                         type="submit"
-                        className={`btn ${activeUAH}`.trim()}
+                        className={`btn ${rate === 'UAH' && 'active'}`}
                     >
                         UAH
                     </button>
                     <button
                         onClick={() => {
                             RatesStore.getRate('RUB')
-                            setActiveRUB('active')
-                            setActiveUAH('')
-                            setActiveUSD('')
                         }}
                         type="submit"
-                        className={`btn ${activeRUB}`.trim()}
+                        className={`btn ${rate === 'RUB' && 'active'}`}
                     >
                         RUB
                     </button>
                     <button
                         onClick={() => {
                             RatesStore.getRate('USD')
-                            setActiveUSD('active')
-                            setActiveRUB('')
-                            setActiveUAH('')
                         }}
                         type="submit"
-                        className={`btn ${activeUSD}`.trim()}
+                        className={`btn ${rate === 'USD' && 'active'}`}
                     >
                         USD
                     </button>
